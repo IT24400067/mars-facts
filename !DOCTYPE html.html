@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mars Facts</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #ff6b6b, #f7b733);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .fact-display {
+            margin: 20px 0;
+            padding: 15px;
+            font-size: 1.2em;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            background-color: #ff6b6b;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #f7b733;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mars Facts</h1>
+        <div id="fact-display" class="fact-display">Click the button to get a Mars fact!</div>
+        <button id="fact-button">Show Random Fact</button>
+    </div>
+    <script>
+        const marsFacts = [
+            "Mars is the fourth planet from the Sun.",
+            "Mars is often referred to as the 'Red Planet' due to its reddish appearance.",
+            "Mars has the largest volcano in the solar system, Olympus Mons, which is about 13.6 miles (22 kilometers) high.",
+            "Mars has two small moons, Phobos and Deimos, which are thought to be captured asteroids.",
+            "A day on Mars, known as a sol, is approximately 24.6 hours long.",
+            "Mars has a thin atmosphere composed mostly of carbon dioxide, with traces of nitrogen and argon.",
+            "The average temperature on Mars is about -80 degrees Fahrenheit (-62 degrees Celsius).",
+            "Mars has seasons similar to Earth due to its axial tilt of 25 degrees.",
+            "Mars is home to the largest canyon in the solar system, Valles Marineris, which is over 2,500 miles (4,000 kilometers) long.",
+            "Mars has been a target for exploration, with numerous missions from various space agencies, including rovers like Curiosity and Perseverance."
+        ];
+
+        const factDisplay = document.getElementById('fact-display');
+        const factButton = document.getElementById('fact-button');
+
+        factButton.addEventListener('click', () => {
+            const randomIndex = Math.floor(Math.random() * marsFacts.length);
+            factDisplay.textContent = marsFacts[randomIndex];
+            factDisplay.classList.add('fade-in');
+            
+            // Remove the class after animation to allow re-triggering
+            setTimeout(() => {
+                factDisplay.classList.remove('fade-in');
+            }, 500);
+        });
+    </script>
+</body>
+</html>
